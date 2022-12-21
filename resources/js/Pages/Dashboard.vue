@@ -1,11 +1,12 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import {Head} from '@inertiajs/inertia-vue3';
-import {Link} from "@inertiajs/inertia-vue3";
+import { Head } from '@inertiajs/inertia-vue3';
+import { Link } from "@inertiajs/inertia-vue3";
 </script>
 
 <template>
-    <Head title="Dashboard"/>
+
+    <Head title="Dashboard" />
 
     <AuthenticatedLayout>
         <template #header>
@@ -18,10 +19,11 @@ import {Link} from "@inertiajs/inertia-vue3";
                     <div class="p-6 text-gray-900">This are your enabled services:</div>
                 </div>
 
-                <div class="px-4 bg-gray-50 overflow-hidden shadow-sm sm:rounded-b-lg">
-                    <div class="p-6 text-gray-900">
-                        <Link href="/blood">Blood pressure</Link>
-                    </div>
+                <div class="p-2 bg-gray-50 overflow-hidden shadow-sm sm:rounded-b-lg">
+                    <Link href="/blood"
+                        class="block p-6 text-red-800 bg-red-200 hover:bg-red-300 rounded-sm">
+                    Blood pressure
+                    </Link>
                 </div>
             </div>
         </div>
