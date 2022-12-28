@@ -21,18 +21,30 @@ function toogleForm() {
             </h2>
         </template>
 
-        <div class="p-2"><button @click="toogleForm"
-                class="p-2 hover:shadow-md hover:bg-zinc-300 hover:rounded-sm">New
+        <div class="p-2"><button @click="toogleForm" class="p-1 text-sm border border-gray-400 shadow-md 
+            bg-gray-200 hover:bg-gray-300 rounded-sm">New
                 record
                 ➕</button></div>
 
         <div class="p-4" v-if="state.showForm">
-            <form>
+            <form class="flex gap-x-2">
                 <div class="flex items-center">
-                    <label for="max">Max</label>
+                    <label for="max" class="w-6 text-sm">High</label>
                     <input id="max" type="text"
-                        class="ml-2 w-full h-8 text-sm rounded-sm border-gray-400">
+                        class="ml-2 w-20 h-8 text-sm rounded-sm border-gray-400">
                 </div>
+                <div class="flex items-center">
+                    <label for="low" class="w-6 text-sm">Low</label>
+                    <input id="low" type="text"
+                        class="ml-2 w-20 h-8 text-sm rounded-sm border-gray-400">
+                </div>
+                <div class="flex items-center">
+                    <label for="bps" class="w-6 text-sm">Bps</label>
+                    <input id="bps" type="text"
+                        class="ml-2 w-20 h-8 text-sm rounded-sm border-gray-400">
+                </div>
+                <button type="submit" class="px-2 py-1 bg-gray-200 rounded-sm text-gray-600 border border-gray-400 
+                    hover:bg-gray-300">Add</button>
             </form>
         </div>
 
