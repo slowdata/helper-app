@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\BloodController;
 use App\Http\Controllers\ProfileController;
+use App\Models\BloodPressureMeasure;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,9 +32,6 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/blood', function () {
-    return Inertia::render('Blood');
-})->middleware(['auth', 'verified'])->name('blood');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,4 +39,21 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+// Blood routes
+Route::middleware('auth')
+    ->controller(BloodController::class)
+    ->group(function () {
+        Route::get('/blood/{user}', 'index')->name('blood.user');
+        Route::post('/blood', 'store');
+        Route::delete(
+            '/blood/measures/{blood_pressure_measure}',
+            'destroy'
+        );
+    });
+
+// Route::get('/blood', function () {
+//     return Inertia::render('Blood');
+// })->middleware(['auth', 'verified'])->name('blood');
+
+
+require __DIR__ . '/auth.php';
