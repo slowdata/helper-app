@@ -19,8 +19,8 @@ import { Link } from "@inertiajs/inertia-vue3";
                     <div class="p-6 text-gray-900">This are your enabled services:</div>
                 </div>
 
-                <div class="p-2 bg-gray-50 overflow-hidden shadow-sm sm:rounded-b-lg">
-                    <Link href="/blood"
+                <div class="p-2 bg-white overflow-hidden shadow-sm sm:rounded-b-lg">
+                    <Link :href="`blood/${$page.props.auth.user.id}`"
                         class="block p-6 text-red-800 bg-red-200 hover:bg-red-300 rounded-sm">
                     Blood pressure
                     </Link>
