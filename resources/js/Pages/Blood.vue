@@ -5,7 +5,7 @@ import { reactive } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 
-let state = reactive({ showForm: false })
+let state = reactive({ showForm: false, icon: '➕' })
 
 const props = defineProps({
     measures: Object
@@ -24,6 +24,7 @@ const sorted_measures = props.measures.length && [...props.measures].sort(
 
 function toogleForm() {
     state.showForm = !state.showForm
+    state.icon = state.icon === '➕' ? '✖️' : '➕'
 }
 
 const form = useForm({
@@ -60,7 +61,7 @@ function handleDelete(id) {
                 <div class="absolute -right-4 sm:-right-6 -bottom-10">
                     <button @click="toogleForm" class="p-1 w-12 h-12 rounded-full text-sm border border-gray-400 shadow-md
                                                         bg-gray-200 hover:bg-gray-300 ">
-                        {{ toogleForm ? 'x' : '+' }}</button>
+                        {{ state.icon }}</button>
                 </div>
             </div>
         </template>
@@ -117,9 +118,9 @@ function handleDelete(id) {
                             <td class="w-6">
                                 <div class="flex justify-center">
                                     <button
-                                        class="p-2 hover:shadow-md hover:bg-green-500 rounded-full">📝</button>
+                                        class="p-2 hover:shadow-md hover:bg-green-700 rounded-full">📝</button>
                                     <button
-                                        class="p-2 hover:shadow-md hover:bg-red-400 rounded-full"
+                                        class="p-2 hover:shadow-md hover:bg-red-500 rounded-full"
                                         @click="handleDelete(mesure.id)">✖️</button>
                                 </div>
                             </td>
